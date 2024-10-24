@@ -333,7 +333,20 @@ width: 200px;
         .years-list.active {
             display: block;
         }
-        {{!-- ---------------------------- --}}
+
+.branch-arrow-mtech{
+     display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+}
+.branch-item.active .branch-arrow-mtech {
+            transform: rotate(-135deg); /* Rotate to point down */
+        }
 .program-item {
     position: relative; /* Positioning for proper alignment of children */
     margin-bottom: 1rem;
@@ -513,131 +526,11 @@ footer {
 
 
 <div class="container">
-    {{!-- <div class="programs">
-      <div class="program-item">
-    <button class="program-btn transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('btech')">BTech</button>
-    <div id="btech-branches" class="branches-list">
-        <h2 class="heading">BTech Branches</h2>
-        <ul id="btech-branches-list">
-            <li class="branch-item" onclick="toggleYears('btech', 'branch-bio-tech')" id="branch-bio-tech">
-                <span class="branch-arrow"></span>Bio Technology
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Chemical Engineering')" id="Chemical Engineering">
-                <span class="branch-arrow"></span>Chemical Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Civil Engineering')" id="Civil Engineering">
-                <span class="branch-arrow"></span>Civil Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Computer Science and Engineering')" id="Computer Science and Engineering">
-                <span class="branch-arrow"></span>Computer Science and Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Data Science and Engineering')" id="Data Science and Engineering">
-                <span class="branch-arrow"></span>Data Science and Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Electrical Engineering')" id="Electrical Engineering">
-                <span class="branch-arrow"></span>Electrical Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Electronics and Communication Engineering')" id="Electronics and Communication Engineering">
-                <span class="branch-arrow"></span>Electronics and Communication Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Electronics and VLSI Engineering')" id="Electronics and VLSI Engineering">
-                <span class="branch-arrow"></span>Electronics and VLSI Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Industrial and Production Engineering')" id="Industrial and Production Engineering">
-                <span class="branch-arrow"></span>Industrial and Production Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Information Technology')" id="Information Technology">
-                <span class="branch-arrow"></span>Information Technology
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Instrumental and Control Engineering')" id="Instrumental and Control Engineering">
-                <span class="branch-arrow"></span>Instrumental and Control Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Mathematics and Computing')" id="Mathematics and Computing">
-                <span class="branch-arrow"></span>Mathematics and Computing
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Mechanical Engineering')" id="Mechanical Engineering">
-                <span class="branch-arrow"></span>Mechanical Engineering
-            </li>
-            <li class="branch-item" onclick="toggleYears('btech', 'Textile Technology')" id="Textile Technology">
-                <span class="branch-arrow"></span>Textile Technology
-            </li>
-        </ul>
-        <div id="btech-years" class="years-list">
-            <h2 class="heading">Years</h2>
-            <ul>
-                <li onclick="handleYears('Bachelor of Technology (B.Tech)', '2022')">2022</li>
-                <li onclick="handleYears('Bachelor of Technology (B.Tech)', '2023')">2023</li>
-                <li onclick="handleYears('Bachelor of Technology (B.Tech)', '2024')">2024</li>
-                <li onclick="handleYears('Bachelor of Technology (B.Tech)', '2025')">2025</li>
-                <li onclick="handleYears('Bachelor of Technology (B.Tech)', '2026')">2026</li>
-            </ul>
-        </div>
-   
-   
-   
-    </div>
-</div>
 
-
-
-
-        <!-- Repeat similar structure for MTech and MBA -->
-        <!-- MTech -->
         
-        <div class="program-item">
-            <button class="program-btn transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('mtech')">MTech</button>
-            <br><br>
-            <div id="mtech-branches" class="branches-list">
-                <h2 class="heading">MTech Branches</h2>
-                <ul>
-                    <li class="branch-item" onclick="toggleYears('mtech', 'Artificial Intelligence')" id="Mechanical Engineering"><span class="branch-arrow"></span>Artificial Intelligence </li>
-                    <li class="branch-item" onclick="toggleYears('mtech', 'Artificial Intelligence')" id="Mechanical Engineering"><span class="branch-arrow"></span>Artificial Intelligence </li>
-                    <li class="branch-item" onclick="toggleYears('mtech', 'Artificial Intelligence')" id="Mechanical Engineering"><span class="branch-arrow"></span>Artificial Intelligence </li>
-                   <li class="branch-item" onclick="toggleYears('mtech', 'Artificial Intelligence')" id="Mechanical Engineering"><span class="branch-arrow"></span>Artificial Intelligence </li>
-                    <li class="branch-item" onclick="toggleYears('mtech', 'Artificial Intelligence')"id="Mechanical Engineering"><span class="branch-arrow"></span>Artificial Intelligence </li>
-                    <!-- Add other branches similarly -->
-                </ul>
-                <div id="mtech-years" class="years-list">
-                    <h2 class="heading">Years</h2>
-                    <ul>
-                        <li onclick="handleYears('Master of Technology (M.Tech)', '2022')">2022</li>
-                        <li onclick="handleYears('Master of Technology (M.Tech)', '2022')">2023</li>
-                        <li onclick="handleYears('Master of Technology (M.Tech)', '2022')">2024</li>
-                        <li onclick="handleYears('Master of Technology (M.Tech)', '2022')">2025</li>
-                        <li onclick="handleYears('Master of Technology (M.Tech)', '2022')">2026</li>
-                        <!-- Add other years similarly -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- MBA -->
-        <div class="program-item">
-            <button class="transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('mba')">MBA</button>
-            <br><br>
-            <div id="mba-branches" class="branches-list">
-                <h2 class="heading">MBA Branches</h2>
-                <ul>
-                    <!-- MBA branches if any -->
-                </ul>
-                <div id="mba-years" class="years-list">
-                    <h2 class="heading">Years</h2>
-                    <ul>
-                        <li onclick="handleYears('MBA', '2022')">2022</li>
-                        <!-- Add other years similarly -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-    
-    
-    --}}
 
 
-{{!-- NEW UI  FOR BTECH/MTECH/MBA --}}
-
-
-    <div class="programs">
+ <div class="programs">
     <!-- BTech Section -->
     <div class="program-item">
         <button class="program-btn transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('btech')">BTech</button>
@@ -707,14 +600,61 @@ footer {
             <h2 class="heading">MTech Branches</h2>
             <ul>
                 <li class="branch-item" onclick="toggleYears('mtech', 'Artificial Intelligence')" id="Artificial Intelligence">
-                    <span class="branch-arrow"></span>Artificial Intelligence
-                </li>
-                <li class="branch-item" onclick="toggleYears('mtech', 'Machine Learning')" id="Machine Learning">
-                    <span class="branch-arrow"></span>Machine Learning
-                </li>
-                <li class="branch-item" onclick="toggleYears('mtech', 'Data Science')" id="Data Science">
-                    <span class="branch-arrow"></span>Data Science
-                </li>
+    <span class="branch-arrow"></span>Artificial Intelligence
+       </li>
+         <li class="branch-item" onclick="toggleYears('mtech', 'Biotechnology')" id="Biotechnology">
+        <span class="branch-arrow"></span>Bio Technology
+         </li>
+
+ 
+
+
+<li class="branch-item" onclick="toggleYears('mtech', 'CSE')" id="CSE">
+    <span class="branch-arrow-mtech"></span>Computer Science and Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Data Science and Engineering')" id="Data Science and Engineering">
+    <span class="branch-arrow-mtech"></span>Data Science and Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Electronics and Communication Engineering')" id="Electronics and Communication Engineering">
+    <span class="branch-arrow-mtech"></span>Electronics and Communication Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Mechanical Engineering')" id="Mechanical Engineering">
+    <span class="branch-arrow-mtech"></span>Mechanical Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'VLSI Design')" id="VLSI Design">
+    <span class="branch-arrow-mtech"></span>VLSI Design
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Thermal Engineering')" id="Thermal Engineering">
+    <span class="branch-arrow-mtech"></span>Thermal Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Textile Engineering and Management')" id="Textile Engineering and Management">
+    <span class="branch-arrow-mtech"></span>Textile Engineering and Management
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Structural and Construction Engineering')" id="Structural and Construction Engineering">
+    <span class="branch-arrow-mtech"></span>Structural and Construction Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Geotechnical & Geo-environmental Engineering')" id="Geotechnical & Geo-environmental Engineering">
+    <span class="branch-arrow-mtech"></span>Geotechnical and Geo-environmental Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Control and Instrumentation Engineering')" id="Control and Instrumentation Engineering">
+    <span class="branch-arrow-mtech"></span>Control and Instrumentation Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Design Engineering')" id="Design Engineering">
+    <span class="branch-arrow-mtech"></span>Design Engineering
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Computer Science & Engineering (Information Security)')" id="Computer Science & Engineering (Information Security)">
+    <span class="branch-arrow-mtech"></span>Computer Science and Engineering (Information Security)
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Renewable Energy')" id="Renewable Energy">
+    <span class="branch-arrow-mtech"></span>Renewable Energy  
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Signal Processing and Machine Learning')" id="Signal Processing and Machine Learning">
+    <span class="branch-arrow-mtech"></span>Signal Processing And Machine Learning
+</li>
+<li class="branch-item" onclick="toggleYears('mtech', 'Data Analytics')" id="Data Analytics">
+    <span class="branch-arrow-mtech"></span>Data Analytics
+</li>
+
                 <!-- Add other MTech branches similarly -->
 
             </ul>
@@ -731,10 +671,12 @@ footer {
                 </ul>
             </div>
         </div>
-    </div>
+        </div>
+
+
 
     <!-- MBA Section -->
-    <div class="program-item">
+     <div class="program-item">
         <button class="program-btn transition delay-100 duration-300 hover:cursor-pointer hover:shadow-xl hover:bg-sky-400 hover:shadow-sky-500 hover:scale-110 w-full px-3 py-5 bg-white shadow shadow-gray-400 rounded-xl" onclick="toggleBranches('mba')">MBA</button>
         <div id="mba-branches" class="branches-list">
             <h2 class="heading">MBA Branches</h2>
@@ -758,13 +700,12 @@ footer {
                         </ul>
             </div>
         </div>
-    </div>
-</div>
+     </div>
+ </div>
 
    
     </div>
-</div>
-
+ </div>
 
 
 
@@ -893,6 +834,7 @@ function createTable(data, originalData) {
     tableContainer.appendChild(table);
 }
 
+
 function handleViewButtonClick(company, data) {
     // Determine if the viewport width is less than 622px
     if (window.innerWidth < 622) {
@@ -902,6 +844,7 @@ function handleViewButtonClick(company, data) {
         console.log("View button clicked. Handle this for larger screens as needed.");
     }
 }
+
 
 function createStudentTable(company, data) {
     const studentTableContainer = document.getElementById("student-table");
@@ -961,6 +904,8 @@ function createStudentTable(company, data) {
     studentTableContainer.appendChild(container);
 }
 
+
+
 function showImagePopup(student) {
     const popup = document.createElement("div");
     popup.className = "popup-overlay";
@@ -1000,6 +945,7 @@ function showImagePopup(student) {
     
     document.body.appendChild(popup);
 }
+
 
 // Adding styles for responsiveness and popups
 const styles = `
@@ -1120,7 +1066,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-{{!-- function toggleBranches(program) {
+{{!-- 
+function toggleBranches(program) {
     // Get the branches container for the selected program
     const branches = document.getElementById(`${program}-branches`);
     if (branches.style.display === 'none' || branches.style.display === '') {
@@ -1133,10 +1080,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let currentOpenBranch = null;
 
-function toggleYears(program, branch) {
+{{!-- function toggleYears(program, branch) {
 
   
     const yearsContainer = document.getElementById(`${program}-years`);
+
+    console.log("Yaer container");
     console.log(yearsContainer);
     const branchItem = document.getElementById(branch);
 
@@ -1165,6 +1114,23 @@ function toggleYears(program, branch) {
     }
 
     console.log(currentOpenBranch);
+} --}}
+
+
+
+function toggleYears(program, branch) {
+    const branchItem = document.getElementById(branch);
+    const yearsList = document.getElementById(`${program}-years`);
+    
+    // Toggle the active class on the clicked branch item
+    branchItem.classList.toggle('active');
+    
+    // Toggle the display of the years list
+    if (yearsList.style.display === "none" || !yearsList.style.display) {
+        yearsList.style.display = "block";
+    } else {
+        yearsList.style.display = "none";
+    }
 }
 
 // Initialize visibility state
