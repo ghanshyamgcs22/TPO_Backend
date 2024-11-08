@@ -320,7 +320,7 @@ width: 200px;
         .years-list.active {
             display: block;
         }
-        {{!-- ---------------------------- --}}
+       
 .program-item {
     position: relative; /* Positioning for proper alignment of children */
     margin-bottom: 1rem;
@@ -464,6 +464,8 @@ footer {
 }
 
   </style>
+
+  
 </head>
 
 <body>
@@ -1021,7 +1023,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let currentOpenBranch = null;
 
-
+/*
 function toggleYears(program, branch) {
     currentOpenBranch=branch;
     const branchItem = document.getElementById(branch);
@@ -1036,6 +1038,41 @@ function toggleYears(program, branch) {
     } else {
         yearsList.style.display = "none";
     }
+}
+*/
+
+
+function toggleYears(program, branch) {
+
+    const yearsContainer = document.getElementById(`${program}-years`);
+    console.log(yearsContainer);
+    const branchItem = document.getElementById(branch);
+
+    // Toggle visibility of the years list
+    if (currentOpenBranch === branch) {
+        // Close the currently open branch
+        yearsContainer.style.display = 'none';
+        branchItem.classList.remove('active');
+        currentOpenBranch = null;
+    } else {
+        // Close previously open branch
+        if (currentOpenBranch) {
+            const previousBranchItem = document.getElementById(currentOpenBranch);
+            const previousYearsContainer = document.getElementById(`${program}-years`);
+
+            
+
+            previousYearsContainer.style.display = 'none';
+            previousBranchItem.classList.remove('active');
+        }
+
+        // Open the new branch
+        yearsContainer.style.display = 'block';
+        branchItem.classList.add('active');
+        currentOpenBranch = branch;
+    }
+
+    console.log(currentOpenBranch);
 }
 
 
