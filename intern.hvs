@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     * {
@@ -515,7 +515,7 @@ footer {
                   <h2 class="heading">BTech Branches</h2>
                    <ul>
                      <ul>
-                    <li class="branch-item" onclick="toggleYears('btech', 'branch-bio-tech')" id="branch-bio-tech">
+                    <li class="branch-item" onclick="toggleYears('btech', 'Bio Technology')" id="Bio Technology">
                     <span class="branch-arrow"></span>Bio Technology
                 </li>
                 <li class="branch-item" onclick="toggleYears('btech', 'Chemical Engineering')" id="Chemical Engineering">
@@ -598,12 +598,14 @@ footer {
                         <li onclick="toggleYears('mtech','Computer Science & Engineering (Information Security)')">Computer Science and Engineering (Information Security)</li>
                         <li onclick="toggleYears('mtech','Renewable Energy')">Renewable Energy</li>
                         <li onclick="toggleYears('mtech','Signal Processing and Machine Learning')">Signal Processing And Machine Learning</li>
-                        <li onclick="toggleYears('mtech','Data Analytics')">Data Analytics</li>
+                        <li onclick="toggleYears('mtech','Data Analytics')">
+                            Data Analytics</li>
 
                     </ul>
 
 
                     <div id="mtech-years" class="years-list">
+                        <h2 class="heading">Years</h2>
                         <ul>
                            <li onclick="handleYears('Master of Technology (M.Tech)','2022')">2022</li>
                             <li onclick="handleYears('Master of Technology (M.Tech)','2023')">2023</li>
@@ -628,6 +630,7 @@ footer {
                   </ul>
 
                     <div id="mba-years" class="years-list">
+                        <h2 class="heading">Years</h2>
                         <ul>
                            <li onclick="handleYears('Master of Business Administration (MBA)','2022')">2022</li>
                             <li onclick="handleYears('Master of Business Administration (MBA)','2023')">2023</li>
@@ -677,9 +680,10 @@ footer {
             return acc;
         }, {});
 
+
         const tableData = Object.values(aggregatedData).map(item => [
             item.company,
-            `${item.package} K`,
+           `${item.package}`!="NaN"?`${item.package} K`:"Not available",
             item.count,
             'View'
         ]);
@@ -730,13 +734,17 @@ function createTable(data, originalData) {
             cell.className = "px-4 py-2 border-b";
             if (index === 3) {
                 const viewButton = document.createElement("button");
-                viewButton.textContent = "View";
-                viewButton.className = "view-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
+               viewButton.innerHTML="<i class='fa-solid fa-eye'></i>";
+                viewButton.className = "view-button text-blue font-bold py-2 px-4 rounded";
                 viewButton.onclick = function () {
                     alert("Please scroll for details");
 
 
                     handleViewButtonClick(rowData[0], originalData);
+                    const div2 = document.getElementById("student-table");
+                    const offset = -110; 
+                    const div2Position = div2.getBoundingClientRect().top + window.scrollY + offset;
+                    window.scrollTo({top: div2Position,behavior: "smooth"});
                 };
                 cell.appendChild(viewButton);
             } else {
@@ -846,7 +854,7 @@ function showImagePopup(student) {
     company.textContent = `Company: ${student.company}`;
     
     const ctc = document.createElement("p");
-    ctc.textContent = `Stipend: ${student.stipend} K`;
+    ctc.textContent =`${student.stipend}`!="null"? `Stipend: ${student.stipend} K`:"Not availbale";
     
     info.appendChild(name);
     info.appendChild(company);
@@ -1015,37 +1023,19 @@ let currentOpenBranch = null;
 
 
 function toggleYears(program, branch) {
-
-  
-    const yearsContainer = document.getElementById(`${program}-years`);
-    console.log(yearsContainer);
+    currentOpenBranch=branch;
     const branchItem = document.getElementById(branch);
-
-    // Toggle visibility of the years list
-    if (currentOpenBranch === branch) {
-        // Close the currently open branch
-        yearsContainer.style.display = 'none';
-        branchItem.classList.remove('active');
-        currentOpenBranch = null;
+    const yearsList = document.getElementById(`${program}-years`);
+    
+    // Toggle the active class on the clicked branch item
+    //branchItem.classList.toggle('active');
+    
+    // Toggle the display of the years list
+    if (yearsList.style.display === "none" || !yearsList.style.display) {
+        yearsList.style.display = "block";
     } else {
-        // Close previously open branch
-        if (currentOpenBranch) {
-            const previousBranchItem = document.getElementById(currentOpenBranch);
-            const previousYearsContainer = document.getElementById(`${program}-years`);
-
-            
-
-            previousYearsContainer.style.display = 'none';
-            previousBranchItem.classList.remove('active');
-        }
-
-        // Open the new branch
-        yearsContainer.style.display = 'block';
-        branchItem.classList.add('active');
-        currentOpenBranch = branch;
-    }
-
-    console.log(currentOpenBranch);
+        yearsList.style.display = "none";
+    }
 }
 
 
@@ -1131,7 +1121,9 @@ function createStudentTable_BigegrWindow(company, data) {
 
         const cellPackage = document.createElement("td");
         cellPackage.className = "px-4 py-2 border-b";
-        cellPackage.appendChild(document.createTextNode(`${student.stipend} K`));
+
+        const text=`${student.stipend}`!="null"? `${student.stipend} K`:"Not availbale";
+        cellPackage.appendChild(document.createTextNode(text));
         row.appendChild(cellPackage);
 
         const cellYear = document.createElement("td");
@@ -1142,8 +1134,8 @@ function createStudentTable_BigegrWindow(company, data) {
         const cellView = document.createElement("td");
         cellView.className = "px-4 py-2 border-b";
         const viewButton = document.createElement("button");
-        viewButton.textContent = "View";
-        viewButton.className = "view-button bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
+        viewButton.innerHTML="<i class='fa-solid fa-eye'></i>";
+                viewButton.className = "view-button text-blue font-bold py-2 px-4 rounded";
         viewButton.onclick = function () {
             showImagePopup_BiggerWindow(student.image); // Assuming student.image contains the image URL
         };
